@@ -22,9 +22,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Load the CommonJS MVC backend modules
-const backendApp = require('./backend/app.js');
-const socketConfig = require('./backend/config/socket.js');
-const logger = require('./backend/utils/logger.js');
+const backendApp = require('../backend/app.js');
+const socketConfig = require('../backend/config/socket.js');
+const logger = require('../backend/utils/logger.js');
 
 async function bootstrap() {
   const app = express();

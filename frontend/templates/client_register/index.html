@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Onboarding - Supa Menu</title>
+    <!-- Tailwind CSS v4 CDN -->
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="text-gray-300 min-h-screen bg-[#07090D] flex flex-col md:flex-row select-none text-left font-sans items-stretch justify-items-stretch">
+
+    <!-- LEFT COVER PANE -->
+    <section class="hidden md:flex md:w-5/12 bg-gradient-to-b from-[#133F25] to-[#0A2615] flex-col justify-between p-12 border-r border-[#22C55E]/15 relative overflow-hidden">
+        <div class="absolute -right-24 -top-24 w-80 h-80 rounded-full bg-[#22C55E]/20 blur-[100px] pointer-events-none"></div>
+
+        <div class="flex items-center gap-3.5">
+            <div class="w-10 h-10 rounded-full border border-[#22C55E]/40 flex items-center justify-center bg-black/40">
+                <span class="text-[#22C55E] text-sm font-black font-display">S</span>
+            </div>
+            <span class="font-extrabold tracking-widest text-sm text-white font-display">SUPA MENU</span>
+        </div>
+
+        <div class="space-y-6">
+            <span class="text-[#22C55E] text-xs font-black tracking-widest uppercase font-mono bg-black/30 border border-[#22C55E]/20 px-3.5 py-1 rounded-full inline-block">
+                Client Terminal
+            </span>
+            <h2 class="text-3xl lg:text-4.5xl font-black text-white tracking-tight leading-tight font-display">
+                Modern Dining at your fingertips.
+            </h2>
+            <p class="text-xs lg:text-sm text-[#A7F3D0] leading-relaxed font-light font-sans">
+                Browse nearby restaurant catalogs, claim table QR seating codes, and checkout instantly using MTN Mobile Money with immediate receipt tokens.
+            </p>
+        </div>
+
+        <div class="text-[10px] text-emerald-400/60 font-mono uppercase tracking-widest">
+            Kigali, Rwanda • diner onboarding
+        </div>
+    </section>
+
+    <!-- RIGHT SIGNUP FORM PANE -->
+    <main class="flex-1 flex flex-col justify-between p-8 sm:p-12 lg:p-16 relative overflow-y-auto">
+        
+        <!-- Header quick link -->
+        <div class="flex justify-between items-center text-xs pb-6">
+            <a href="../landing_page/index.html" class="text-gray-500 hover:text-white transition-colors flex items-center gap-1.5 font-bold">
+                ← Back to Home
+            </a>
+            <div class="flex items-center gap-1">
+                <span class="text-gray-500 font-bold">Ready to Scan?</span>
+                <a href="../client_app/index.html" class="text-[#22C55E] font-extrabold hover:underline">Launch Diner App</a>
+            </div>
+        </div>
+
+        <!-- Center client signup cards -->
+        <div class="w-full max-w-sm mx-auto my-auto space-y-6 text-left py-6">
+            <div class="space-y-2">
+                <h3 class="text-2xl font-black text-white font-display">Diner Registration</h3>
+                <p class="text-xs text-gray-500 font-light">Set up details to initialize your tableside dining portal</p>
+            </div>
+
+            <!-- Onboarding Form -->
+            <form action="../client_app/index.html" class="space-y-4">
+                
+                <div class="space-y-1.5">
+                    <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wide">Diner Full Name</label>
+                    <input type="text" required placeholder="Jacques Kagabo" class="w-full bg-[#0C121D] border border-gray-900 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-[#22C55E] transition-colors">
+                </div>
+
+                <div class="space-y-1.5">
+                    <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wide">MoMo Phone Number</label>
+                    <div class="flex items-center bg-[#0C121D] border border-gray-900 rounded-xl px-4 py-2.5">
+                        <span class="text-[#22C55E] text-xs font-bold mr-3">+250</span>
+                        <div class="w-[1px] h-3.5 bg-gray-800 mr-3"></div>
+                        <input type="tel" required placeholder="788 000 000" class="bg-transparent text-white w-full text-xs focus:outline-none placeholder-gray-750">
+                    </div>
+                </div>
+
+                <div class="space-y-1.5">
+                    <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wide">Secret PIN Passcode</label>
+                    <input type="password" required placeholder="••••" maxlength="4" class="w-full bg-[#0C121D] border border-gray-900 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-[#22C55E] tracking-widest transition-colors">
+                </div>
+
+                <button 
+                    type="submit" 
+                    class="w-full bg-[#22C55E] hover:bg-[#1EAB52] text-black font-black uppercase text-xs tracking-wider py-4 rounded-xl mt-6 transition-all shadow-md active:scale-98"
+                >
+                    Start Smart Tableside Dining →
+                </button>
+            </form>
+        </div>
+
+        <div class="text-[9px] text-gray-600 tracking-widest text-center mt-12 uppercase select-none">
+            Secure Diner Auth • Supa Menu Client Layer
+        </div>
+    </main>
+
+</body>
+</html>

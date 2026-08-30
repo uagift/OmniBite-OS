@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Verdana, sans-serif; background-color: #0c121d; color: #ffffff; padding: 24px; margin: 0; }
+    .card { background-color: #111827; border: 1px solid #1f2937; border-radius: 12px; padding: 24px; max-width: 600px; margin: 0 auto; border-top: 4px solid #10b981; }
+    .header { font-size: 20px; font-weight: bold; color: #10b981; margin-bottom: 12px; border-bottom: 2px solid #1f2937; padding-bottom: 12px; }
+    .detail { font-size: 14px; margin-bottom: 8px; color: #d1d5db; }
+    .summary-grid { display: grid; grid-template-cols: repeat(2, 1fr); gap: 12px; margin: 20px 0; }
+    .metric-card { background-color: #1a2234; border: 1px solid #2d3748; padding: 16px; border-radius: 8px; text-align: center; }
+    .metric-val { font-size: 24px; font-weight: 900; color: #10b981; margin-top: 6px; }
+    .metric-label { font-size: 11px; text-transform: uppercase; color: #a0aec0; letter-spacing: 0.5px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">📈 Your Daily Sales Performance Summary</div>
+    <p class="detail">Hello {{ownerName}},</p>
+    <p class="detail">Here is your automated business health summary report for <strong>{{restaurantName}}</strong> on <strong>{{reportDate}}</strong>:</p>
+    
+    <div class="summary-grid">
+      <div class="metric-card">
+        <div class="metric-label">Gross Revenue</div>
+        <div class="metric-val">{{grossRevenue}} RWF</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Completed Orders</div>
+        <div class="metric-val">{{completedOrders}}</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Average Order Value</div>
+        <div class="metric-val">{{avgOrderValue}} RWF</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Cancelled Orders</div>
+        <div class="metric-val" style="color: #ef4444;">{{cancelledOrders}}</div>
+      </div>
+    </div>
+    
+    <p class="detail">Keep providing premium tastes and experiences to your diners! View full breakdown trends inside the master dashboard panel.</p>
+  </div>
+</body>
+</html>

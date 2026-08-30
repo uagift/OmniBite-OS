@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supa Menu - Seamless Tableside Dining Platform</title>
+    <!-- Tailwind CSS v4 CDN -->
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;850&family=JetBrains+Mono:wght@400;500&display=swap font-display">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="text-gray-300 min-h-screen bg-[#07090D] overflow-x-hidden select-none text-left font-sans">
+
+    <!-- Global Grid Glow Ambient -->
+    <div class="glow-bg top-0 left-1/4"></div>
+    <div class="glow-bg bottom-0 right-1/4"></div>
+
+    <!-- MAIN HEADER BAR -->
+    <header class="w-full bg-[#0C121D]/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-900 px-6 py-4">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-full border border-[#22C55E]/40 flex items-center justify-center bg-black/40">
+                    <span class="text-[#22C55E] text-sm font-black font-display">S</span>
+                </div>
+                <span class="font-extrabold tracking-widest text-sm text-white font-display">SUPA MENU</span>
+            </a>
+            
+            <nav class="hidden md:flex items-center gap-8 text-xs font-bold text-gray-400 select-none">
+                <a href="#how" class="hover:text-white transition-colors">How It Works</a>
+                <a href="#why" class="hover:text-white transition-colors">Why Choose Us</a>
+                <a href="#about" class="hover:text-white transition-colors">About Us</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <a href="../owner_login/index.html" class="text-xs font-extrabold text-gray-400 hover:text-white transition-colors">
+                    Owner Login
+                </a>
+                <a href="../owner_signup/index.html" class="bg-[#22C55E] text-black font-extrabold text-2xs uppercase tracking-wider px-5 py-2.5 rounded-xl hover:bg-white transition-all">
+                    Register Hub
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO PROFILE BANNER CONTAINER -->
+    <section class="max-w-6xl mx-auto px-4 py-16 md:py-24 grid grid-cols-1 md:grid-cols-12 gap-12 items-center text-left relative">
+        <div class="md:col-span-7 space-y-6">
+            <span class="bg-[#22C55E]/10 border border-[#22C55E]/20 text-[#22C55E] text-[10px] font-black uppercase px-3 py-1 rounded-full tracking-wider inline-block">
+                🚀 Kigali's Premium Restaurant POS Suite
+            </span>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-none font-display">
+                Modern Tableside <span class="text-[#22C55E]">Menu Ordering</span> for smart diners.
+            </h1>
+            <p class="text-sm sm:text-base text-gray-400 leading-relaxed font-light max-w-lg">
+                Digitize your physical restaurant, enable table QR code menu scanning, accept MTN MoMo checkout, and coordinate live staff orders flawlessly.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                <a href="../owner_signup/index.html" class="bg-[#22C55E] text-black text-xs font-black uppercase tracking-wider py-4 px-8 rounded-xl hover:bg-white transition-all text-center shadow-lg transform hover:-translate-y-0.5">
+                    Activate Your Restaurant
+                </a>
+                <a href="../client_register/index.html" class="border border-gray-800 text-white hover:text-white bg-[#0C121D]/50 text-xs font-black uppercase tracking-wider py-4 px-8 rounded-xl hover:bg-gray-800 transition-all text-center">
+                    Browse as Customer
+                </a>
+            </div>
+        </div>
+        
+        <div class="md:col-span-5 flex justify-center">
+            <!-- Graphical card simulator mimicking smartphone QR scanner -->
+            <div class="w-[300px] h-[480px] rounded-[38px] bg-black border-[10px] border-zinc-800 select-none relative shadow-2xl flex flex-col justify-between overflow-hidden">
+                <div class="p-6 text-center space-y-4 pt-10">
+                    <div class="w-16 h-16 bg-[#22C55E]/10 border border-[#22C55E]/20 text-[#22C55E] rounded-full mx-auto flex items-center justify-center animate-pulse">
+                        <!-- Custom Scan SVG icon -->
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m0 11v1m0-11a5 5 0 015 5v3a5 5 0 01-5 5H8a5 5 0 01-5-5v-3a5 5 0 015-5h4z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-base font-bold text-white font-display">Scan QR to Taste</h3>
+                    <p class="text-2xs text-gray-400 max-w-[200px] mx-auto leading-relaxed">
+                        Seat tables carry distinct digital identities. Point your camera to place items.
+                    </p>
+                    <div class="w-36 h-36 border border-dashed border-[#22C55E]/30 rounded-2xl mx-auto flex items-center justify-center bg-zinc-950/80">
+                        <!-- QR Code grid mockup -->
+                        <div class="w-28 h-28 opacity-40 bg-contain bg-center bg-gray-800 rounded-lg flex items-center justify-center">
+                            <span class="text-[8px] font-mono text-gray-500 uppercase">QR CODE HERE</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-[#0C121D] p-4 text-center border-t border-gray-950">
+                    <span class="text-[9px] uppercase tracking-widest text-gray-500 font-mono">SUPAMENU DEMO DEVICE</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRESETS OVERALL BRANDS ROW -->
+    <section class="max-w-6xl mx-auto px-4 py-8 border-y border-gray-900 text-center select-none">
+        <span class="text-[9px] tracking-widest font-mono text-gray-600 block uppercase mb-6">
+            Relying on state-of-the-art kitchen systems across Africa
+        </span>
+        <div class="flex flex-wrap items-center justify-center gap-12 opacity-40 grayscale hover:grayscale-0 transition-all duration-300">
+            <span class="text-lg font-black font-display text-white">CHEF BOUTELLIER</span>
+            <span class="text-lg font-black font-display text-white">LE GOURMET RESTO</span>
+            <span class="text-lg font-black font-display text-white">KIGALI BITES</span>
+            <span class="text-lg font-black font-display text-white">SNAX &amp; COFFEE</span>
+        </div>
+    </section>
+
+    <!-- SECTION: HOW IT WORKS -->
+    <section id="how" class="max-w-6xl mx-auto px-4 py-16 md:py-24 text-left">
+        <div class="text-center max-w-xl mx-auto space-y-3 mb-16">
+            <span class="text-xs font-black text-[#22C55E] tracking-widest uppercase">The Process</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight font-display">
+                Modern Dining in 3 Simple Steps
+            </h2>
+            <p class="text-xs sm:text-sm text-gray-400 font-light leading-relaxed">
+                We've automated the entire customer journey, leaving your waiters free to focus purely on prompt hospitality.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Step 1 -->
+            <div class="bg-[#0C121D] border border-gray-900 rounded-3xl p-6 relative flex flex-col justify-between h-72">
+                <div class="space-y-4">
+                    <span class="text-5xl font-extrabold text-emerald-500/10 font-mono">01</span>
+                    <h3 class="text-base font-bold text-white font-display">Scan Tableside</h3>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed">
+                        Client sits at a physical seat and scans the table's designated QR code to instantly load your customized digital menu on their phone.
+                    </p>
+                </div>
+                <div class="text-[10px] uppercase tracking-wider font-mono text-gray-500 pt-4/5">
+                    No App download needed
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="bg-[#0C121D] border border-gray-900 rounded-3xl p-6 relative flex flex-col justify-between h-72">
+                <div class="space-y-4">
+                    <span class="text-5xl font-extrabold text-emerald-500/10 font-mono">02</span>
+                    <h3 class="text-base font-bold text-white font-display">Order &amp; Customize</h3>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed">
+                        Diners pick mains, desserts, or drinks, adjust recipe spicy thresholds, choose table seating, and review total billing summaries.
+                    </p>
+                </div>
+                <div class="text-[10px] uppercase tracking-wider font-mono text-gray-500 pt-4/5">
+                    Real-time kitchen syncing
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="bg-[#0C121D] border border-gray-900 rounded-3xl p-6 relative flex flex-col justify-between h-72">
+                <div class="space-y-4">
+                    <span class="text-5xl font-extrabold text-emerald-500/10 font-mono">03</span>
+                    <h3 class="text-base font-bold text-white font-display">MTN MoMo Integration</h3>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed">
+                        Place secure payments directly on mobile via Mobile Money. The transaction clears instantly, notifying the chef to begin cooking immediately.
+                    </p>
+                </div>
+                <div class="text-[10px] uppercase tracking-wider font-mono text-gray-500 pt-4/5">
+                    Instant payout settlements
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: WHY CHOOSE US -->
+    <section id="why" class="max-w-6xl mx-auto px-4 py-16 md:py-24 text-left">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+            <div class="md:col-span-4 space-y-4">
+                <span class="text-xs font-black text-[#22C55E] tracking-widest uppercase">The Advantages</span>
+                <h2 class="text-2xl sm:text-3.5xl font-black text-white tracking-tight leading-tight font-display">
+                    Tailor-made for food industries.
+                </h2>
+                <p class="text-xs text-gray-400 leading-relaxed font-light">
+                    Supa Menu addresses critical bottlenecks in hospitality, increasing daily ticket size by up to 35%.
+                </p>
+            </div>
+
+            <div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="p-6 rounded-2xl bg-[#0C121D] border border-gray-900 space-y-2 text-left">
+                    <h4 class="text-sm font-bold text-white font-display">⚡ Live Inventory Switches</h4>
+                    <p class="text-2xs text-gray-400 leading-relaxed font-light">
+                        Hide unavailable ingredients or dishes instantly on the client app to prevent order refund frustrations.
+                    </p>
+                </div>
+                <div class="p-6 rounded-2xl bg-[#0C121D] border border-gray-900 space-y-2 text-left">
+                    <h4 class="text-sm font-bold text-white font-display">👤 Unified Staff Directory</h4>
+                    <p class="text-2xs text-gray-400 leading-relaxed font-light">
+                        Coordinate chefs, bar managers, and wait staff from a single unified workspace.
+                    </p>
+                </div>
+                <div class="p-6 rounded-2xl bg-[#0C121D] border border-gray-900 space-y-2 text-left">
+                    <h4 class="text-sm font-bold text-white font-display">🗺️ Interactive Seating Layouts</h4>
+                    <p class="text-2xs text-gray-400 leading-relaxed font-light">
+                        Add and configure tables with localized identifiers, letting staff find guests instantly.
+                    </p>
+                </div>
+                <div class="p-6 rounded-2xl bg-[#0C121D] border border-gray-900 space-y-2 text-left">
+                    <h4 class="text-sm font-bold text-white font-display">🔐 Secure Admin Terminal</h4>
+                    <p class="text-2xs text-gray-400 leading-relaxed font-light">
+                        Access real-time sales curves, check active store earnings, and modify restaurant profile preferences securely.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN FOOTER BLOCK -->
+    <footer class="w-full bg-[#0C121D] border-t border-gray-950 py-12 px-6">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full border border-gray-800 flex items-center justify-center bg-black/40">
+                    <span class="text-[#22C55E] text-xs font-black">S</span>
+                </div>
+                <span class="text-xs font-extrabold text-[#22C55E] tracking-widest font-display">SUPA MENU PLATFORM</span>
+            </div>
+            
+            <p class="text-[10px] text-gray-600 uppercase tracking-widest">
+                © 2026 SUPAMENU CO, LTD • ALL BLUEPRINTS RESERVED.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>

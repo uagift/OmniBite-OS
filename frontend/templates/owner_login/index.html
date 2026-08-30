@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner Login - Supa Menu Business Suite</title>
+    <!-- Tailwind CSS v4 CDN -->
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="text-gray-300 min-h-screen bg-[#07090D] flex flex-col md:flex-row select-none text-left font-sans items-stretch justify-items-stretch">
+
+    <!-- LEFT EYE-CATCHING COL BRAND COVER PANE -->
+    <section class="hidden md:flex md:w-5/12 bg-gradient-to-b from-[#133F25] to-[#0A2615] flex-col justify-between p-12 border-r border-[#22C55E]/15 relative overflow-hidden">
+        <!-- Floating abstract light circle -->
+        <div class="absolute -right-24 -top-24 w-80 h-80 rounded-full bg-[#22C55E]/20 blur-[100px] pointer-events-none"></div>
+
+        <!-- Upper logo mark -->
+        <div class="flex items-center gap-3.5">
+            <div class="w-10 h-10 rounded-full border border-[#22C55E]/40 flex items-center justify-center bg-black/40">
+                <span class="text-[#22C55E] text-base font-black font-display">S</span>
+            </div>
+            <span class="font-extrabold tracking-widest text-sm text-white font-display">SUPA MENU</span>
+        </div>
+
+        <!-- Middle pitch copy -->
+        <div class="space-y-6">
+            <span class="text-[#22C55E] text-xs font-black tracking-widest uppercase font-mono bg-black/30 border border-[#22C55E]/20 px-3.5 py-1 rounded-full inline-block">
+                Store Operations Core
+            </span>
+            <h2 class="text-3xl lg:text-4.5xl font-black text-white tracking-tight leading-tight font-display">
+                Empower your restaurant workspace.
+            </h2>
+            <p class="text-xs lg:text-sm text-[#A7F3D0] leading-relaxed font-light">
+                Secure access to your live dining tables, inventory availability ledgers, and staff coordinator cards.
+            </p>
+        </div>
+
+        <!-- Lower status credit -->
+        <div class="text-[10px] text-emerald-400/60 font-mono uppercase tracking-widest">
+            Kigali, Rwanda • Standard Terminal
+        </div>
+    </section>
+
+    <!-- RIGHT FORM PANE -->
+    <main class="flex-1 flex flex-col justify-between p-8 sm:p-12 lg:p-16 relative">
+        
+        <!-- Header quick link -->
+        <div class="flex justify-between items-center text-xs pb-6">
+            <a href="../landing_page/index.html" class="text-gray-500 hover:text-white transition-colors flex items-center gap-1.5">
+                ← Back to Home
+            </a>
+            <div class="flex items-center gap-1">
+                <span class="text-gray-500">New Proprietor?</span>
+                <a href="../owner_signup/index.html" class="text-[#22C55E] font-bold hover:underline">Create Account</a>
+            </div>
+        </div>
+
+        <!-- Center login card -->
+        <div class="w-full max-w-sm mx-auto my-auto space-y-6 text-left">
+            <div class="space-y-2">
+                <h3 class="text-2xl font-black text-white font-display text-left">Login to Workspace</h3>
+                <p class="text-xs text-gray-500">Provide credentials to load owner dashboard terminal</p>
+            </div>
+
+            <!-- Login Form -->
+            <form action="../admin_dashboard/index.html" class="space-y-4">
+                
+                <!-- Email Address -->
+                <div class="space-y-1.5">
+                    <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wide">
+                        Registered Email Address
+                    </label>
+                    <input 
+                        type="email" 
+                        required 
+                        placeholder="owner@supamenu.com"
+                        class="w-full bg-[#0C121D] border border-gray-900 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#22C55E] transition-colors"
+                    >
+                </div>
+
+                <!-- Password -->
+                <div class="space-y-1.5 pt-1">
+                    <div class="flex justify-between items-center">
+                        <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wide">
+                            Password Identifier
+                        </label>
+                        <a href="#" class="text-[10px] text-gray-500 hover:text-white transition-colors">Forgot Password?</a>
+                    </div>
+                    <input 
+                        type="password" 
+                        required 
+                        placeholder="••••••••"
+                        class="w-full bg-[#0C121D] border border-gray-900 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#22C55E] transition-colors"
+                    >
+                </div>
+
+                <!-- Remember Me Checkbox -->
+                <div class="flex items-center gap-2.5 pt-2">
+                    <input 
+                        type="checkbox" 
+                        id="remember" 
+                        checked
+                        class="w-4 h-4 rounded-md border-gray-900 bg-zinc-950 text-[#22C55E] focus:ring-0 cursor-pointer"
+                    >
+                    <label for="remember" class="text-xs text-gray-400 cursor-pointer user-select-none font-medium">Keep me authenticated securely</label>
+                </div>
+
+                <!-- Submit Button -->
+                <button 
+                    type="submit" 
+                    class="w-full bg-[#22C55E] hover:bg-[#1EAB52] text-black font-black uppercase text-xs tracking-wider py-4 rounded-xl mt-6 transition-all shadow-md active:scale-98"
+                >
+                    Login to Workspace Terminal
+                </button>
+            </form>
+        </div>
+
+        <!-- Footer terms -->
+        <div class="text-[9px] text-gray-600 tracking-widest text-center mt-12 uppercase select-none">
+            Authorized Business Terminal • Secure Layer
+        </div>
+    </main>
+
+</body>
+</html>

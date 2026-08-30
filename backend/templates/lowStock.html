@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Verdana, sans-serif; background-color: #0c121d; color: #ffffff; padding: 24px; margin: 0; }
+    .card { background-color: #111827; border: 1px solid #1f2937; border-radius: 12px; padding: 24px; max-width: 600px; margin: 0 auto; border-top: 4px solid #ef4444; }
+    .header { font-size: 20px; font-weight: bold; color: #ef4444; margin-bottom: 12px; border-bottom: 2px solid #1f2937; padding-bottom: 12px; }
+    .detail { font-size: 14px; margin-bottom: 8px; color: #d1d5db; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">🚨 CRITICAL ALERT: Low Menu Stock Notice</div>
+    <p class="detail">Hello Supa Menu Operator / Owner,</p>
+    <p class="detail">An item has dipped below the secure warning threshold level and requires immediate replenishment:</p>
+    <div style="background-color: #ef444415; border: 1px solid #ef444430; padding: 15px; border-radius: 8px; margin: 15px 0;">
+      <p style="margin: 4px 0; font-size: 14px;"><strong>Restaurant Name:</strong> {{restaurantName}}</p>
+      <p style="margin: 4px 0; font-size: 14px;"><strong>Menu Item Name:</strong> {{menuItemName}}</p>
+      <p style="margin: 4px 0; font-size: 14px; color: #ef4444;"><strong>Current Stock Level:</strong> {{currentStock}} units left</p>
+    </div>
+    <p class="detail">To prevent customers from ordering an unavailable dish, please log into your merchant admin page to restock this dish or toggle its status to "Unavailable".</p>
+  </div>
+</body>
+</html>

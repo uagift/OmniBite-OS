@@ -1,0 +1,38 @@
+/**
+ * Standalone CSS for Supa Menu Landing Page
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@450;700&display=swap');
+
+/* Custom scrollbar adjustments */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #07090D;
+}
+::-webkit-scrollbar-thumb {
+    background: #111827;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #22C55E;
+}
+
+/* Custom background ambient glows */
+.glow-bg {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(34, 197, 94, 0.08) 0%, rgba(7, 9, 13, 0) 70%);
+    filter: blur(80px);
+    z-index: -10;
+    pointer-events: none;
+}
+
+/* Hero card container hover glows */
+.card-hover-glow:hover {
+    box-shadow: 0 0 30px rgba(34, 197, 94, 0.15);
+    border-color: rgba(34, 197, 94, 0.4);
+}

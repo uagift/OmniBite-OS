@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner Dashboard - Supa Menu Business Portal</title>
+    <!-- Tailwind CSS v4 CDN -->
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap font-display">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="text-gray-300 min-h-screen bg-[#07090D] flex flex-col md:flex-row font-sans relative overflow-x-hidden text-left">
+
+    <!-- SIDEBAR NAVIGATION -->
+    <aside class="w-full md:w-64 shrink-0 bg-[#0C111C] border-r border-gray-900 flex flex-col justify-between p-6 md:h-screen md:sticky md:top-0 z-30 transition-transform select-none">
+        <div class="space-y-8">
+            <!-- Brand Logo -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full border border-[#22C55E]/40 flex items-center justify-center bg-black/40 shadow-[0_0_10px_rgba(34,197,94,0.1)]">
+                    <span class="text-[#22C55E] text-xs font-black font-display">S</span>
+                </div>
+                <div class="text-left">
+                    <span class="font-bold text-xs tracking-widest text-[#22C55E] block uppercase font-display">Supa Bites</span>
+                    <span class="text-[8px] text-gray-400 tracking-wider font-mono">REST OWNER DASH</span>
+                </div>
+            </div>
+
+            <!-- Profile card identifier -->
+            <div class="p-4 rounded-xl bg-[#111827] border border-gray-900 flex items-center gap-3">
+                <img class="w-9 h-9 rounded-full object-cover border border-[#22C55E]/30" src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=150&q=80">
+                <div class="text-left min-w-0 flex-1">
+                    <span class="block text-xs font-bold text-white truncate">Le Gourmet Kigali</span>
+                    <span class="block text-[9px] text-gray-400 truncate">jacques@supamenu.com</span>
+                </div>
+            </div>
+
+            <!-- Side actions lists -->
+            <nav class="space-y-1.5 text-left">
+                <button onclick="switchTab('dashboard')" id="tab_btn_dashboard" class="w-full flex items-center justify-between px-4 py-3 rounded-xl text-xs font-black bg-[#1D5E3A] text-white">
+                    <div class="flex items-center gap-3">
+                        <span>Dashboard</span>
+                    </div>
+                </button>
+                <button onclick="switchTab('inventory')" id="tab_btn_inventory" class="w-full flex items-center justify-between px-4 py-3 rounded-xl text-xs font-black text-gray-400 hover:text-white hover:bg-white/5">
+                    <div class="flex items-center gap-3">
+                        <span>Inventory Ledger</span>
+                    </div>
+                </button>
+                <button onclick="switchTab('orders')" id="tab_btn_orders" class="w-full flex items-center justify-between px-4 py-3 rounded-xl text-xs font-black text-gray-400 hover:text-white hover:bg-white/5">
+                    <div class="flex items-center gap-3">
+                        <span>Live Stream Orders</span>
+                    </div>
+                    <span class="bg-red-500 text-white font-extrabold text-[9px] px-2 py-0.5 rounded-full ring-2 ring-black">3</span>
+                </button>
+                <button onclick="switchTab('menu')" id="tab_btn_menu" class="w-full flex items-center justify-between px-4 py-3 rounded-xl text-xs font-black text-gray-400 hover:text-white hover:bg-white/5">
+                    <div class="flex items-center gap-3">
+                        <span>Menu Switches</span>
+                    </div>
+                </button>
+                <button onclick="switchTab('tables')" id="tab_btn_tables" class="w-full flex items-center justify-between px-4 py-3 rounded-xl text-xs font-black text-gray-400 hover:text-white hover:bg-white/5">
+                    <div class="flex items-center gap-3">
+                        <span>Physical Seating</span>
+                    </div>
+                </button>
+                <button onclick="switchTab('staff')" id="tab_btn_staff" class="w-full flex items-center justify-between px-4 py-3 rounded-xl text-xs font-black text-gray-400 hover:text-white hover:bg-white/5">
+                    <div class="flex items-center gap-3">
+                        <span>Wait Staff directory</span>
+                    </div>
+                </button>
+            </nav>
+        </div>
+
+        <div class="space-y-2 pt-4 border-t border-gray-900 select-none text-left">
+            <a href="../landing_page/index.html" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs font-black text-rose-500 hover:bg-rose-500/10 transition-all">
+                <span>Switch to Landing</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- MAIN PANEL WRAPPER -->
+    <div class="flex-1 min-w-0 flex flex-col min-h-screen relative p-4 sm:p-6 lg:p-8">
+        
+        <!-- Live Alert Banner -->
+        <div class="mb-6 bg-[#123820] border border-[#22C55E]/40 p-4 rounded-2xl flex items-center justify-between text-xs select-none">
+            <span class="font-bold text-white">Live System Update: 3 incoming tableside orders awaiting preparing allocation!</span>
+            <button onclick="switchTab('orders')" class="bg-[#22C55E] text-black font-black uppercase text-[10px] px-3.5 py-1.5 rounded-lg hover:bg-white cursor-pointer transition-colors">Analyze Stream</button>
+        </div>
+
+        <!-- 1. DASHBOARD HOME TAB -->
+        <div id="panel_dashboard" class="space-y-6">
+            <!-- Stat grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-[#0C111C] border border-gray-900 rounded-2xl p-5 flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-[#22C55E]/10 border border-[#22C55E]/20 text-[#22C55E] flex items-center justify-center font-mono font-black text-lg">🛍️</div>
+                    <div>
+                        <span class="block text-2xl font-black text-white font-mono">14</span>
+                        <span class="block text-[9px] uppercase tracking-wider text-gray-500 font-extrabold mt-1">Today's Orders</span>
+                    </div>
+                </div>
+                <div class="bg-[#0C111C] border border-gray-900 rounded-2xl p-5 flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 text-[#22C55E] flex items-center justify-center font-mono font-black text-lg">💰</div>
+                    <div>
+                        <span class="block text-2xl font-black text-white font-mono">$240.50</span>
+                        <span class="block text-[9px] uppercase tracking-wider text-gray-500 font-extrabold mt-1">Earnings Revenue</span>
+                    </div>
+                </div>
+                <div class="bg-[#0C111C] border border-gray-900 rounded-2xl p-5 flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 text-[#22C55E] flex items-center justify-center font-mono font-black text-lg">📍</div>
+                    <div>
+                        <span class="block text-2xl font-black text-white font-mono">4 / 6</span>
+                        <span class="block text-[9px] uppercase tracking-wider text-gray-500 font-extrabold mt-1">Active Seating Tables</span>
+                    </div>
+                </div>
+                <div class="bg-[#0C111C] border border-gray-900 rounded-2xl p-5 flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/20 text-[#22C55E] flex items-center justify-center font-mono font-black text-lg">⚠️</div>
+                    <div>
+                        <span class="block text-2xl font-black text-white font-mono">2</span>
+                        <span class="block text-[9px] uppercase tracking-wider text-gray-500 font-extrabold mt-1">Low Storage Alerts</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Double Sub panels -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-3 select-none">
+                <div class="lg:col-span-6 bg-[#0C111C] border border-gray-900 p-6 rounded-2xl text-left">
+                    <h4 class="text-sm font-bold text-white tracking-tight flex items-center gap-2 mb-4 font-display">⚠️ Low Stock Alerts</h4>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center p-3 border border-red-950/20 rounded-xl bg-[#111827]">
+                            <div class="flex items-center gap-3">
+                                <img class="w-9 h-9 object-cover rounded-lg shrink-0" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=150&q=80">
+                                <div>
+                                    <span class="block text-xs font-bold text-white leading-none">Minced Samosas</span>
+                                    <span class="block text-[9px] text-gray-500 mt-1 uppercase font-semibold">Starters</span>
+                                </div>
+                            </div>
+                            <span class="bg-red-500/15 text-red-400 border border-red-500/20 font-mono text-[9px] font-extrabold px-2.5 py-0.5 rounded-full">Only 3 left</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 border border-red-950/20 rounded-xl bg-[#111827]">
+                            <div class="flex items-center gap-3">
+                                <img class="w-9 h-9 object-cover rounded-lg shrink-0" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=150&h=150&q=80">
+                                <div>
+                                    <span class="block text-xs font-bold text-white leading-none">Roasted Coffee Brew</span>
+                                    <span class="block text-[9px] text-gray-500 mt-1 uppercase font-semibold">Drinks</span>
+                                </div>
+                            </div>
+                            <span class="bg-red-500/15 text-red-400 border border-red-500/20 font-mono text-[9px] font-extrabold px-2.5 py-0.5 rounded-full">Only 7 left</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6 bg-[#0C111C] border border-gray-900 p-6 rounded-2xl text-left">
+                    <h4 class="text-sm font-bold text-white tracking-tight flex items-center gap-2 mb-6 font-display">📈 Store Statistics</h4>
+                    <div class="space-y-4 text-xs font-medium">
+                        <div class="flex justify-between border-b border-gray-900 pb-2">
+                            <span class="text-gray-400">Total catalog products:</span>
+                            <span class="font-bold text-white">12 items</span>
+                        </div>
+                        <div class="flex justify-between border-b border-gray-900 pb-2">
+                            <span class="text-gray-400">Registered Wait Staff:</span>
+                            <span class="font-bold text-white">4 active servants</span>
+                        </div>
+                        <div class="flex justify-between border-b border-gray-900 pb-2">
+                            <span class="text-gray-400">Unused physical tables:</span>
+                            <span class="font-bold text-[#22C55E]">2 tables free</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. INVENTORY LEDGER TAB -->
+        <div id="panel_inventory" class="hidden bg-[#0C121D] border border-gray-900 rounded-[24px] p-6 text-left">
+            <div class="flex justify-between items-center border-b border-gray-900 pb-4 mb-6">
+                <div>
+                     <h3 class="text-base font-black text-[#22C55E] font-display">Inventory Ledger</h3>
+                     <p class="text-2xs text-gray-400">Monitor ingredients stocking limits and item pricing tables</p>
+                </div>
+                <button class="bg-[#22C55E] text-black font-bold text-2xs px-4 py-2 rounded-xl">Add New Product</button>
+            </div>
+
+            <div class="overflow-x-auto select-none">
+                <table class="w-full text-xs text-left text-gray-400">
+                    <thead class="bg-[#111827]/50 uppercase tracking-wider text-[8.5px] font-black text-gray-500 border-b border-gray-900">
+                        <tr>
+                            <th class="py-3 px-4">Item Details</th>
+                            <th class="py-3 px-4">Category</th>
+                            <th class="py-3 px-4">Price</th>
+                            <th class="py-3 px-4">Remaining limits</th>
+                            <th class="py-3 px-4 text-center border-none">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-900">
+                        <tr class="hover:bg-[#111827]/10">
+                            <td class="py-3.5 px-4 font-extrabold text-white">
+                                <div class="flex items-center gap-3">
+                                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=150&h=150&q=80" class="w-10 h-10 rounded-lg object-cover">
+                                    <div>
+                                         <span class="block">Beef Brochettes</span>
+                                         <span class="block text-[10px] text-gray-500 font-light font-sans">Garlic spiced Kigali meat brochettes</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="py-3.5 px-4 font-mono text-[10.5px]">Mains</td>
+                            <td class="py-3.5 px-4 font-mono text-emerald-400">$8.50</td>
+                            <td class="py-3.5 px-4 font-mono text-[10.5px]">24 units left</td>
+                            <td class="py-3.5 px-4 text-center">
+                                <button class="px-3 py-1 bg-gray-900 hover:bg-gray-800 text-gray-400 hover:text-white rounded border border-gray-850">Edit</button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-[#111827]/10">
+                            <td class="py-3.5 px-4 font-extrabold text-white">
+                                <div class="flex items-center gap-3">
+                                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=150&h=150&q=80" class="w-10 h-10 rounded-lg object-cover">
+                                    <div>
+                                         <span class="block">Organic Garden salad</span>
+                                         <span class="block text-[10px] text-gray-500 font-light font-sans">Fresh carrots, lettuce, and vinegar dressing</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="py-3.5 px-4 font-mono text-[10.5px]">Appetizers</td>
+                            <td class="py-3.5 px-4 font-mono text-emerald-400">$6.00</td>
+                            <td class="py-3.5 px-4 font-mono text-[10.5px]">15 units left</td>
+                            <td class="py-3.5 px-4 text-center">
+                                <button class="px-3 py-1 bg-gray-900 hover:bg-gray-800 text-gray-400 hover:text-white rounded border border-gray-850">Edit</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 3. LIVE STREAM ORDERS TAB -->
+        <div id="panel_orders" class="hidden bg-[#0C121D] border border-gray-900 rounded-[24px] p-6 text-left">
+            <div class="border-b border-gray-900 pb-4 mb-6">
+                <h3 class="text-base font-black font-display text-white">Live Stream Client Orders (Tableside)</h3>
+                <p class="text-2xs text-gray-400">Track pending transactions and update cooking timelines</p>
+            </div>
+
+            <div class="overflow-x-auto select-none">
+                <table class="w-full text-xs text-left text-gray-400">
+                    <thead class="bg-[#111827]/50 uppercase tracking-wider text-[8.5px] font-black text-gray-500 border-b border-gray-900">
+                        <tr>
+                            <th class="py-3 px-4">Order Code / Date</th>
+                            <th class="py-3 px-4">Diner Table</th>
+                            <th class="py-3 px-4">Items Summary</th>
+                            <th class="py-3 px-4">Payment Cleared</th>
+                            <th class="py-3 px-4">Current state</th>
+                            <th class="py-3 px-4 text-center">Update</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-900">
+                        <tr>
+                            <td class="py-4 px-4 font-mono text-white">ORDER-748<br><span class="text-[9px] text-gray-500 font-light font-sans">12:35 PM</span></td>
+                            <td class="py-4 px-4"><span class="bg-[#111827] border border-gray-800 px-3 py-1 rounded-full text-[10px] font-extrabold text-white">Table 03 (Vip)</span></td>
+                            <td class="py-4 px-4">Beef Brochettes x2, Cold Fanta x1</td>
+                            <td class="py-4 px-4 text-emerald-400 font-mono font-extrabold">$19.50</td>
+                            <td class="py-4 px-4"><span class="bg-amber-500/10 text-amber-500 border border-amber-500/20 px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase">Pending</span></td>
+                            <td class="py-4 px-4 text-center">
+                                <button class="px-3 py-1 bg-[#1D5E3A] hover:bg-[#22C55E] text-white hover:text-black rounded text-[10px] font-black transition-colors">Start Cooking</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-4 font-mono text-white">ORDER-729<br><span class="text-[9px] text-gray-500 font-light font-sans">12:15 PM</span></td>
+                            <td class="py-4 px-4"><span class="bg-[#111827] border border-gray-800 px-3 py-1 rounded-full text-[10px] font-extrabold text-white">Table 01</span></td>
+                            <td class="py-4 px-4">Organic Garden salad x1</td>
+                            <td class="py-4 px-4 text-emerald-400 font-mono font-extrabold">$6.00</td>
+                            <td class="py-4 px-4"><span class="bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase">Preparing</span></td>
+                            <td class="py-4 px-4 text-center">
+                                <button class="px-3 py-1 bg-emerald-500 hover:bg-emerald-600 text-black rounded text-[10px] font-black transition-colors">Serve Meal</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 4. MENU SWITCHES TAB -->
+        <div id="panel_menu" class="hidden space-y-6">
+            <div class="bg-[#0C111C] border border-gray-900 rounded-[24px] p-6 text-left">
+                <h3 class="text-base font-black text-white font-display">Menu Availability Switches</h3>
+                <p class="text-2xs text-gray-400">Instantly switch visibility of items across consumer dining catalogs.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-[#0C111C] border border-gray-900 p-4 rounded-xl flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=150&h=150&q=80" class="w-10 h-10 object-cover rounded-lg">
+                        <div class="leading-tight">
+                            <span class="block text-xs font-bold text-white">Beef Brochettes</span>
+                            <span class="text-[9px] text-gray-500 font-mono font-bold">$8.50</span>
+                        </div>
+                    </div>
+                    <button class="text-[#22C55E] text-[10px] font-black uppercase select-none cursor-pointer">Visible</button>
+                </div>
+                <div class="bg-[#0C111C] border border-gray-900 p-4 rounded-xl flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=150&h=150&q=80" class="w-10 h-10 object-cover rounded-lg">
+                        <div class="leading-tight">
+                            <span class="block text-xs font-bold text-white">Coffee Brew</span>
+                            <span class="text-[9px] text-gray-500 font-mono font-bold">$3.00</span>
+                        </div>
+                    </div>
+                    <button class="text-gray-500 text-[10px] font-black uppercase select-none cursor-pointer">Hidden</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. PHYSICAL SEATING TAB -->
+        <div id="panel_tables" class="hidden bg-[#0C121D] border border-gray-900 rounded-[24px] p-6 text-left">
+            <div class="flex justify-between items-center border-b border-gray-900 pb-4 mb-6">
+                <div>
+                     <h3 class="text-base font-black text-[#22C55E] font-display">Physical Seating Tables</h3>
+                     <p class="text-2xs text-gray-400">Map local dining tables for scanning target allocation</p>
+                </div>
+                <button class="bg-[#22C55E] text-black font-bold text-2xs px-4 py-2 rounded-xl">Add Table</button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-[#111827] border border-gray-900 p-5 rounded-2xl flex items-center justify-between">
+                    <div>
+                        <span class="block font-bold text-sm text-white">Table 01</span>
+                        <span class="block text-[9px] text-gray-500 font-bold">Standard Side</span>
+                    </div>
+                    <span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded text-[8px] font-black uppercase">Free</span>
+                </div>
+                <div class="bg-[#111827] border border-gray-900 p-5 rounded-2xl flex items-center justify-between">
+                    <div>
+                        <span class="block font-bold text-sm text-white">Table 03</span>
+                        <span class="block text-[9px] text-gray-500 font-bold">Vip Balcony</span>
+                    </div>
+                    <span class="bg-red-500/10 text-red-500 border border-red-500/20 px-2 py-0.5 rounded text-[8px] font-black uppercase">Occupied</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. WAIT STAFF DIRECTORY TAB -->
+        <div id="panel_staff" class="hidden bg-[#0C121D] border border-gray-900 rounded-[24px] p-6 text-left">
+            <div class="flex justify-between items-center border-b border-gray-900 pb-4 mb-6 font-display">
+                <div>
+                     <h3 class="text-base font-black text-white">Restaurant wait staff</h3>
+                     <p class="text-2xs text-gray-400">Manage wait staff contact cards and role registries</p>
+                </div>
+                <button class="bg-[#22C55E] text-black font-bold text-2xs px-4 py-2 rounded-xl">Add Staff</button>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-[#111827] border border-gray-900 p-5 rounded-2xl flex flex-col justify-between h-40">
+                    <div class="flex justify-between items-start">
+                        <div>
+                             <span class="font-extrabold text-sm text-white block">Aime Gaju</span>
+                             <span class="text-[9px] text-gray-550 block mt-1">Code: S-45</span>
+                        </div>
+                        <span class="bg-[#22C55E]/15 text-[#22C55E] text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full">Waiter</span>
+                    </div>
+                    <div class="space-y-1 text-[10.5px] border-t border-gray-950/60 pt-3 text-gray-400 font-medium">
+                        <div class="flex justify-between"><span>Email:</span><span class="text-gray-300">gaju@supamenu.com</span></div>
+                        <div class="flex justify-between"><span>Phone:</span><span class="text-gray-300">+250 788 111 222</span></div>
+                    </div>
+                </div>
+                <div class="bg-[#111827] border border-gray-900 p-5 rounded-2xl flex flex-col justify-between h-40">
+                    <div class="flex justify-between items-start">
+                        <div>
+                             <span class="font-extrabold text-sm text-white block">Fred Kalisa</span>
+                             <span class="text-[9px] text-gray-550 block mt-1">Code: S-12</span>
+                        </div>
+                        <span class="bg-[#22C55E]/15 text-[#22C55E] text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full">Head Chef</span>
+                    </div>
+                    <div class="space-y-1 text-[10.5px] border-t border-gray-950/60 pt-3 text-gray-400 font-medium">
+                        <div class="flex justify-between"><span>Email:</span><span class="text-gray-300">fred@supamenu.com</span></div>
+                        <div class="flex justify-between"><span>Phone:</span><span class="text-gray-300">+250 788 444 555</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- TAB SWITCH SCRIPT -->
+    <script>
+        function switchTab(tabId) {
+            // Hide all dashboard panels
+            const panels = ['dashboard', 'inventory', 'orders', 'menu', 'tables', 'staff'];
+            panels.forEach(id => {
+                document.getElementById(`panel_${id}`).style.display = 'none';
+                
+                // Reset tab button selections
+                const btn = document.getElementById(`tab_btn_${id}`);
+                btn.className = "w-full flex items-center justify-between px-4 py-3 rounded-xl text-xs font-black text-gray-400 hover:text-white hover:bg-white/5";
+            });
+
+            // Show active panel
+            document.getElementById(`panel_${tabId}`).style.display = tabId === 'dashboard' ? 'space-y-6' : 'block';
+            
+            // Set active button
+            const activeBtn = document.getElementById(`tab_btn_${tabId}`);
+            activeBtn.className = "w-full flex items-center justify-between px-4 py-3 rounded-xl text-xs font-black bg-[#1D5E3A] text-white";
+        }
+    </script>
+
+</body>
+</html>

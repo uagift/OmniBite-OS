@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Verdana, sans-serif; background-color: #0c121d; color: #ffffff; padding: 24px; margin: 0; }
+    .card { background-color: #111827; border: 1px solid #1f2937; border-radius: 12px; padding: 24px; max-width: 600px; margin: 0 auto; }
+    .header { font-size: 20px; font-weight: bold; color: #3b82f6; margin-bottom: 12px; border-bottom: 2px solid #1f2937; padding-bottom: 12px; }
+    .detail { font-size: 14px; margin-bottom: 8px; color: #d1d5db; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">✅ Your Order HAS BEEN ACCEPTED! - #{{orderNumber}}</div>
+    <p class="detail">Hi {{customerName}},</p>
+    <p class="detail">Great news! <strong>{{restaurantName}}</strong> has accepted your order for <strong>Table {{tableNumber}}</strong>. Our culinary crew is ready to assemble your feast in the kitchen.</p>
+    <p class="detail"><strong>Total Charged:</strong> {{totalAmount}} RWF</p>
+    <p class="detail">We will keep you updated as your order moves through preparation.</p>
+    <p class="detail">Enjoy your stay at our table!</p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0c121d; color: #ffffff; padding: 24px; margin: 0; }
+    .card { background-color: #111827; border: 1px solid #1f2937; border-radius: 12px; padding: 24px; max-width: 600px; margin: 0 auto; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); }
+    .header { font-size: 20px; font-weight: bold; color: #22c55e; margin-bottom: 12px; border-bottom: 2px solid #1f2937; pb-12px; }
+    .detail { font-size: 14px; margin-bottom: 8px; color: #d1d5db; }
+    .btn { background-color: #22c55e; color: #000000; font-weight: bold; text-decoration: none; padding: 12px 20px; display: inline-block; border-radius: 6px; font-size: 13px; margin-top: 16px; text-transform: uppercase; }
+    .items-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+    .items-table th { text-align: left; background-color: #1f2937; padding: 8px; font-size: 12px; text-transform: uppercase; color: #9ca3af; }
+    .items-table td { padding: 10px 8px; border-bottom: 1px solid #1f2937; font-size: 13px; color: #e5e7eb; }
+    .total-row { font-weight: bold; font-size: 15px; color: #22c55e; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">🔔 New Table Order Received - #{{orderNumber}}</div>
+    <div class="detail"><strong>Restaurant:</strong> {{restaurantName}}</div>
+    <div class="detail"><strong>Table Number:</strong> Table {{tableNumber}}</div>
+    <div class="detail"><strong>Payment Method:</strong> {{paymentMethod}}</div>
+    <div class="detail"><strong>Notes:</strong> {{notes}}</div>
+    
+    <table class="items-table">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th style="text-align: center;">Qty</th>
+          <th style="text-align: right;">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{itemsRows}}
+        <tr class="total-row">
+          <td colspan="2" style="padding-top: 15px;">TOTAL AMOUNT RWF</td>
+          <td style="text-align: right; padding-top: 15px;">{{totalAmount}}</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <p class="detail" style="margin-top: 20px;">Staff has been alerted of this order. Please head over to your Supa Menu Merchant Dashboard to approve and prepare the dishes.</p>
+    
+    <a href="{{dashboardUrl}}" class="btn">View Orders Dashboard</a>
+  </div>
+</body>
+</html>

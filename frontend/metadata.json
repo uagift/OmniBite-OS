@@ -1,0 +1,8 @@
+{
+  "name": "Supa Menu",
+  "description": "Smart tools for smarter restaurants, featuring an interactive landing page, owner and client login/signup portals, restaurant profile wizard, and real-time management dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

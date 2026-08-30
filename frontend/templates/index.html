@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supa Menu - Standalone HTML & CSS Templates Showroom</title>
+    <!-- Tailwind CSS v4 CDN -->
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #07090D;
+        }
+        .font-display {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+    </style>
+</head>
+<body class="text-gray-300 min-h-screen py-10 px-4 sm:px-6 lg:px-8 select-none text-left">
+
+    <!-- Header Showroom Banner -->
+    <header class="max-w-6xl mx-auto mb-12 border-b border-gray-900 pb-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div class="space-y-2">
+            <div class="flex items-center gap-3">
+                <span class="bg-[#22C55E]/10 border border-[#22C55E]/20 text-[#22C55E] text-[10px] font-black uppercase px-3 py-1 rounded-full tracking-wider">
+                    Pure Static Render Core
+                </span>
+            </div>
+            <h1 class="text-3xl sm:text-4xl font-black text-white tracking-tight font-display">
+                Supa Menu <span class="text-[#22C55E]">Showroom</span>
+            </h1>
+            <p class="text-sm text-gray-400 max-w-xl font-light leading-relaxed">
+                A set of isolated, fully responsive <b>HTML & CSS</b> pages built to match the design of the main full-stack application.
+            </p>
+        </div>
+        <div>
+            <a href="/" class="inline-flex items-center gap-2 bg-[#22C55E] text-black font-extrabold text-xs tracking-wider uppercase px-5 py-3 rounded-xl hover:bg-white transition-all transform hover:-translate-y-0.5 shadow-lg">
+                ← Go to React Web App
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="max-w-6xl mx-auto space-y-12">
+        
+        <!-- Blueprint Architecture -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6 bg-[#0C121D] border border-gray-900 rounded-[28px] p-6 lg:p-8">
+            <div class="md:col-span-1 space-y-3">
+                <span class="text-xs font-black tracking-widest text-[#22C55E] uppercase block">Developer Guide</span>
+                <h3 class="text-xl font-bold text-white tracking-tight font-display">Architectural Honesty</h3>
+                <p class="text-xs text-gray-400 leading-relaxed font-light">
+                    These templates contain clean, standards-compliant HTML5 structures linked directly to custom stylesheet documents. Standard Tailwind classes run natively via browser-side JIT simulation to guarantee consistent styling on any device.
+                </p>
+            </div>
+            
+            <div class="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="p-5 rounded-2xl bg-black/40 border border-gray-900 space-y-2">
+                    <span class="text-[10px] font-black text-gray-500 uppercase tracking-widest font-mono">STANDALONE READY</span>
+                    <h4 class="text-sm font-bold text-white leading-none">Zero Dependencies</h4>
+                    <p class="text-2xs text-gray-400 leading-relaxed">
+                        To run or export these templates, copy the corresponding folder's index.html and style.css. They boot directly, with no compiler, Node, or config files required.
+                    </p>
+                </div>
+                <div class="p-5 rounded-2xl bg-black/40 border border-gray-900 space-y-2">
+                    <span class="text-[10px] font-black text-gray-500 uppercase tracking-widest font-mono">AESTHETIC MATCH</span>
+                    <h4 class="text-sm font-bold text-white leading-none">Pixel-Perfect Layouts</h4>
+                    <p class="text-2xs text-gray-400 leading-relaxed">
+                        The colors, grid spacing, transitions, shadows, blur cards, and fonts match the core full-stack platform.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Template Display Grid -->
+        <section class="space-y-6">
+            <h2 class="text-xl font-black text-white font-display tracking-tight flex items-center gap-2">
+                <span>Available Template Pages</span>
+                <span class="text-xs bg-gray-900 border border-gray-850 text-gray-500 font-mono px-2 py-0.5 rounded-md">8 Screens</span>
+            </h2>
+
+            <!-- Cards Container -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- 1. Landing Page -->
+                <div class="bg-[#0C121D] border border-gray-900 rounded-[24px] overflow-hidden flex flex-col justify-between hover:border-gray-800 transition-colors">
+                    <div class="p-5 space-y-2 text-left">
+                        <span class="text-[9px] font-bold text-[#22C55E] uppercase tracking-widest font-mono">Template #1</span>
+                        <h3 class="text-base font-bold text-white leading-tight font-display">Landing Page</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed font-light">
+                            Features a polished hero banner, custom company about, why choose us features, partner brands, and interactive navigators.
+                        </p>
+                    </div>
+                    <div class="p-5 pt-0 flex gap-2">
+                        <a href="/templates/landing_page/index.html" target="_blank" class="flex-1 text-center py-2 bg-[#22C55E]/10 hover:bg-[#22C55E] hover:text-black border border-[#22C55E]/20 text-white font-black text-2xs uppercase tracking-wide rounded-lg transition-all">
+                            Live Demo ↗
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 2. Owner Login -->
+                <div class="bg-[#0C121D] border border-gray-900 rounded-[24px] overflow-hidden flex flex-col justify-between hover:border-gray-800 transition-colors">
+                    <div class="p-5 space-y-2 text-left">
+                        <span class="text-[9px] font-bold text-[#22C55E] uppercase tracking-widest font-mono">Template #2</span>
+                        <h3 class="text-base font-bold text-white leading-tight font-display">Owner Login</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed font-light">
+                            Dual-pane authentic restaurant owner authentication screen with descriptive left summary pane and clean form right column.
+                        </p>
+                    </div>
+                    <div class="p-5 pt-0 flex gap-2">
+                        <a href="/templates/owner_login/index.html" target="_blank" class="flex-1 text-center py-2 bg-[#22C55E]/10 hover:bg-[#22C55E] hover:text-black border border-[#22C55E]/20 text-white font-black text-2xs uppercase tracking-wide rounded-lg transition-all">
+                            Live Demo ↗
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 3. Owner Signup -->
+                <div class="bg-[#0C121D] border border-gray-900 rounded-[24px] overflow-hidden flex flex-col justify-between hover:border-gray-800 transition-colors">
+                    <div class="p-5 space-y-2 text-left">
+                        <span class="text-[9px] font-bold text-[#22C55E] uppercase tracking-widest font-mono">Template #3</span>
+                        <h3 class="text-base font-bold text-white leading-tight font-display">Owner Signup</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed font-light">
+                            Dual-pane authentic restaurant owner registration screen structured and layout synced with custom form indicators.
+                        </p>
+                    </div>
+                    <div class="p-5 pt-0 flex gap-2">
+                        <a href="/templates/owner_signup/index.html" target="_blank" class="flex-1 text-center py-2 bg-[#22C55E]/10 hover:bg-[#22C55E] hover:text-black border border-[#22C55E]/20 text-white font-black text-2xs uppercase tracking-wide rounded-lg transition-all">
+                            Live Demo ↗
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 4. Setup Wizard -->
+                <div class="bg-[#0C121D] border border-gray-900 rounded-[24px] overflow-hidden flex flex-col justify-between hover:border-gray-800 transition-colors">
+                    <div class="p-5 space-y-2 text-left">
+                        <span class="text-[9px] font-bold text-[#22C55E] uppercase tracking-widest font-mono">Template #4</span>
+                        <h3 class="text-base font-bold text-white leading-tight font-display">Restaurant Setup Wizard</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed font-light">
+                            Includes 3 onboarding phases (General Profiling with a live simulated preview, Timing schedules, and First product addition).
+                        </p>
+                    </div>
+                    <div class="p-5 pt-0 flex gap-2">
+                        <a href="/templates/restaurant_setup/index.html" target="_blank" class="flex-1 text-center py-2 bg-[#22C55E]/10 hover:bg-[#22C55E] hover:text-black border border-[#22C55E]/20 text-white font-black text-2xs uppercase tracking-wide rounded-lg transition-all">
+                            Live Demo ↗
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 5. Owner Dashboard -->
+                <div class="bg-[#0C121D] border border-gray-900 rounded-[24px] overflow-hidden flex flex-col justify-between hover:border-gray-800 transition-colors">
+                    <div class="p-5 space-y-2 text-left">
+                        <span class="text-[9px] font-bold text-[#22C55E] uppercase tracking-widest font-mono">Template #5</span>
+                        <h3 class="text-base font-bold text-white leading-tight font-display">Owner Admin Dashboard</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed font-light">
+                            High-fidelity admin control center with active tabs, statistics counters, order management tables, menu editors, and low stock alarms.
+                        </p>
+                    </div>
+                    <div class="p-5 pt-0 flex gap-2">
+                        <a href="/templates/admin_dashboard/index.html" target="_blank" class="flex-1 text-center py-2 bg-[#22C55E]/10 hover:bg-[#22C55E] hover:text-black border border-[#22C55E]/20 text-white font-black text-2xs uppercase tracking-wide rounded-lg transition-all">
+                            Live Demo ↗
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 6. Client Register -->
+                <div class="bg-[#0C121D] border border-gray-900 rounded-[24px] overflow-hidden flex flex-col justify-between hover:border-gray-800 transition-colors">
+                    <div class="p-5 space-y-2 text-left">
+                        <span class="text-[9px] font-bold text-[#22C55E] uppercase tracking-widest font-mono">Template #6</span>
+                        <h3 class="text-base font-bold text-white leading-tight font-display">Diner Client Onboarding</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed font-light">
+                            Diner onboarding register view showing a modern digital menu ordering context on the left side, and signup forms on the right.
+                        </p>
+                    </div>
+                    <div class="p-5 pt-0 flex gap-2">
+                        <a href="/templates/client_register/index.html" target="_blank" class="flex-1 text-center py-2 bg-[#22C55E]/10 hover:bg-[#22C55E] hover:text-black border border-[#22C55E]/20 text-white font-black text-2xs uppercase tracking-wide rounded-lg transition-all">
+                            Live Demo ↗
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 7. Diner Client Application -->
+                <div class="bg-[#0C121D] border border-gray-900 rounded-[24px] overflow-hidden flex flex-col justify-between hover:border-gray-800 transition-colors">
+                    <div class="p-5 space-y-2 text-left">
+                        <span class="text-[9px] font-bold text-[#22C55E] uppercase tracking-widest font-mono">Template #7</span>
+                        <h3 class="text-base font-bold text-white leading-tight font-display">Tableside Diner Menu App</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed font-light">
+                            Interactive digital tableside client application. Pick category dishes, add items to basket, and test MTN MoMo checkout interface.
+                        </p>
+                    </div>
+                    <div class="p-5 pt-0 flex gap-2">
+                        <a href="/templates/client_app/index.html" target="_blank" class="flex-1 text-center py-2 bg-[#22C55E]/10 hover:bg-[#22C55E] hover:text-black border border-[#22C55E]/20 text-white font-black text-2xs uppercase tracking-wide rounded-lg transition-all">
+                            Live Demo ↗
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer credit blocks -->
+    <footer class="max-w-6xl mx-auto border-t border-gray-900 mt-16 pt-8 text-center text-4xs text-gray-500 uppercase tracking-widest">
+        <span>Supa Menu Design architecture repository system • Standalone models</span>
+    </footer>
+
+</body>
+</html>

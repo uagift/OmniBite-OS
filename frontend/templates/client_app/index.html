@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supa Menu - Tableside Dining App</title>
+    <!-- Tailwind CSS v4 CDN -->
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap font-display">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="text-gray-300 min-h-screen bg-[#07090D] flex flex-col font-sans relative pb-24 text-left">
+
+    <!-- MASTER HEADER BAR -->
+    <header class="sticky top-0 z-40 bg-[#0C111C]/90 backdrop-blur-md border-b border-gray-900 px-4 py-4 sm:px-6">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <!-- Brand identifier -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full overflow-hidden border border-[#22C55E]/30 flex items-center justify-center bg-[#0C111D]">
+                    <span class="text-[#22C55E] text-base font-black font-display">S</span>
+                </div>
+                <div class="text-left">
+                    <h1 class="text-sm font-black text-white tracking-widest leading-none font-display">SUPA MENU</h1>
+                    <p class="text-[10px] text-gray-400 mt-1 uppercase font-semibold">
+                        Client: <span class="text-[#22C55E] normal-case" id="client_profile_name">Jacques Guest</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Route navigation switches (Desktop) -->
+            <div class="hidden sm:flex items-center gap-2 bg-[#111827] border border-gray-800 p-1 rounded-full text-xs font-semibold select-none">
+                <button onclick="navigateView('home')" id="nav_btn_home" class="px-4 py-2 rounded-full cursor-pointer transition-all bg-[#22C55E] text-black font-extrabold">
+                    Browse
+                </button>
+                <button onclick="navigateView('tables')" id="nav_btn_tables" class="px-4 py-2 rounded-full cursor-pointer transition-all text-gray-400 hover:text-white">
+                    Tables Map
+                </button>
+                <button onclick="navigateView('orders')" id="nav_btn_orders" class="px-4 py-2 rounded-full cursor-pointer transition-all text-gray-400 hover:text-white relative">
+                    My Orders
+                    <span id="orders_badge" class="absolute -top-1 -right-1.5 w-4 h-4 rounded-full bg-red-500 text-white text-[9px] flex items-center justify-center font-bold">1</span>
+                </button>
+            </div>
+
+            <!-- Header actions bag & logout -->
+            <div class="flex items-center gap-3">
+                <button onclick="toggleCartDrawer(true)" class="p-2.5 rounded-xl border border-gray-800 bg-[#111827] text-gray-300 hover:text-white relative cursor-pointer">
+                    🛒
+                    <span id="cart_indicator_num" class="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-[#22C55E] text-black text-[10px] flex items-center justify-center font-extrabold shadow-[0_0_8px_rgba(34,197,94,0.4)]">0</span>
+                </button>
+                <a href="../landing_page/index.html" class="p-2.5 rounded-xl border border-gray-800 bg-red-950/20 text-red-400 hover:bg-red-950/40 hover:text-red-300 transition-all cursor-pointer">
+                    ❌
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE NAVIGATION RAIL (Sticky Bottom) -->
+    <div class="sm:hidden fixed bottom-0 left-0 right-0 z-30 bg-[#0C111C] border-t border-gray-900 grid grid-cols-3 text-center py-2.5 text-[11px] font-bold shadow-[0_-5px_20px_rgba(0,0,0,0.5)] select-none">
+        <button onclick="navigateView('home')" id="mobile_btn_home" class="flex flex-col items-center gap-1 text-[#22C55E]">
+            <span>🌎</span>
+            <span>Restaurants</span>
+        </button>
+        <button onclick="navigateView('tables')" id="mobile_btn_tables" class="flex flex-col items-center gap-1 text-gray-500">
+            <span>📍</span>
+            <span>Tables</span>
+        </button>
+        <button onclick="navigateView('orders')" id="mobile_btn_orders" class="flex flex-col items-center gap-1 text-gray-500 relative">
+            <span id="mobile_orders_badge" class="absolute top-0 right-7 w-3.5 h-3.5 rounded-full bg-red-500 text-white text-[8px] flex items-center justify-center font-bold">1</span>
+            <span>⏳</span>
+            <span>My Orders</span>
+        </button>
+    </div>
+
+    <!-- MAIN CORE CONTAINER WORKSPACE -->
+    <main class="flex-1 max-w-6xl w-full mx-auto px-4 pt-6 sm:px-6">
+
+        <!-- VIEW 1: DISCOVERY RESTAURANTS DIRECTORY -->
+        <div id="view_home" class="space-y-6">
+            <div class="bg-gradient-to-r from-emerald-950/40 to-black/20 border border-gray-800 p-6 sm:p-8 rounded-[28px] text-left relative overflow-hidden">
+                <div class="absolute right-0 top-1/2 -smart-translate w-[200px] h-[200px] rounded-full bg-[#22C55E]/10 blur-[60px] pointer-events-none"></div>
+                <span class="bg-[#22C55E]/10 border border-[#22C55E]/30 text-[#22C55E] text-[10px] font-black uppercase px-3 py-1 rounded-full tracking-wider inline-block font-mono">
+                    ⚡ Smart Tableside Dining
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight mt-3 font-display">
+                    Order directly from your Diner Table
+                </h2>
+                <p class="text-gray-400 text-xs sm:text-sm max-w-md mt-2 font-light leading-relaxed">
+                    Choose nearby partner bistros, scan QR seats, buy customized meals, and experience secure checkout callbacks.
+                </p>
+            </div>
+
+            <div class="text-left mt-8 select-none">
+                <h3 class="text-base font-bold text-white tracking-tight font-display">Supa Menu Partner Restaurants</h3>
+                <p class="text-gray-500 text-2xs mt-1 font-mono">Select a brand below to view dishes</p>
+            </div>
+
+            <!-- Restaurant Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div onclick="selectRestaurant('Le Gourmet', 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=150&h=150&q=80', 'FINE MODERN BISTRO')" class="bg-[#0C111C] border border-gray-800 rounded-2xl overflow-hidden hover:border-[#22C55E]/35 cursor-pointer group flex flex-col transition-colors">
+                    <div class="h-44 w-full relative overflow-hidden bg-gray-900 border-b border-gray-950">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=350&q=80" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                        <span class="absolute top-3 right-3 bg-black/75 px-2.5 py-1 rounded-full text-[9px] font-bold text-[#22C55E] border border-[#22C55E]/15">★ 154 Loved</span>
+                        <div class="absolute bottom-3 left-3 text-[10px] text-gray-300">Nyarugenge, Kigali</div>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between text-left">
+                        <div>
+                            <h4 class="font-bold text-base text-white group-hover:text-[#22C55E] transition-colors font-display">Le Gourmet</h4>
+                            <p class="text-gray-400 text-xs mt-1.5 leading-relaxed font-light">Fine modern bistro offering authentic continental barbecues and wines.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-gray-950 flex justify-between items-center text-[10px] font-black uppercase text-[#22C55E]">
+                            <span>View Dishes Menu</span>
+                            <span>→</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div onclick="selectRestaurant('Organica', 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=150&h=150&q=80', 'GREEN GARDEN ESCAPE')" class="bg-[#0C111C] border border-gray-800 rounded-2xl overflow-hidden hover:border-[#22C55E]/35 cursor-pointer group flex flex-col transition-colors">
+                    <div class="h-44 w-full relative overflow-hidden bg-gray-900 border-b border-gray-950">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=350&q=80" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                        <span class="absolute top-3 right-3 bg-black/75 px-2.5 py-1 rounded-full text-[9px] font-bold text-[#22C55E] border border-[#22C55E]/15">★ 98 Loved</span>
+                        <div class="absolute bottom-3 left-3 text-[10px] text-gray-300">Nyarugenge, Kigali</div>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between text-left">
+                        <div>
+                            <h4 class="font-bold text-base text-white group-hover:text-[#22C55E] transition-colors font-display">Organica</h4>
+                            <p class="text-gray-400 text-xs mt-1.5 leading-relaxed font-light">Organic salads, vegan recipes, sugar-free pastries, and matcha drinks.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-gray-950 flex justify-between items-center text-[10px] font-black uppercase text-[#22C55E]">
+                            <span>View Dishes Menu</span>
+                            <span>→</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW 2: RESTAURANT SPECIFIC MENU -->
+        <div id="view_menu" class="hidden space-y-6">
+            <!-- Restaurant Banner -->
+            <div class="flex items-center gap-3 border-b border-gray-900 pb-5 text-left">
+                <button onclick="navigateView('home')" class="p-2 rounded-xl border border-gray-800 bg-[#0C111C] hover:text-[#22C55E] transition-colors">← Back</button>
+                <div>
+                     <h2 id="menu_title_elm" class="text-xl font-bold text-white tracking-tight font-display">Le Gourmet</h2>
+                     <p id="menu_subtitle_elm" class="text-xs text-gray-400 mt-1">Nyarugenge, Kigali • Dynamic Tableside Catalog</p>
+                </div>
+            </div>
+
+            <!-- Categories Toggles -->
+            <div class="flex gap-2 border-b border-gray-950 pb-4 select-none">
+                <button onclick="filterCategory('Mains')" id="cat_btn_mains" class="px-5 py-2 rounded-full text-xs font-black tracking-wide bg-[#22C55E] text-black">Mains</button>
+                <button onclick="filterCategory('Drinks')" id="cat_btn_drinks" class="px-5 py-2 rounded-full text-xs font-black tracking-wide bg-[#111827] text-gray-400 hover:text-white">Beverages</button>
+                <button onclick="filterCategory('Sweets')" id="cat_btn_sweets" class="px-5 py-2 rounded-full text-xs font-black tracking-wide bg-[#111827] text-gray-400 hover:text-white">Desserts</button>
+            </div>
+
+            <!-- Products Listing -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                <!-- Mains Items (Shown by default) -->
+                <div class="prod-item category-Mains bg-[#0C111C] border border-gray-900 rounded-2xl p-4 flex gap-4">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=150&h=150&q=80" class="w-20 h-20 rounded-xl object-cover shrink-0 select-none">
+                    <div class="flex-1 flex flex-col justify-between">
+                        <div>
+                             <h4 class="font-bold text-sm text-white font-display">Kigali Spicy Brochettes</h4>
+                             <p class="text-gray-500 text-[10px] mt-0.5 line-clamp-1">Spiced beef skewers with green peppers</p>
+                        </div>
+                        <div class="flex justify-between items-center pt-2">
+                             <span class="font-mono text-emerald-450 font-bold text-xs">$8.50</span>
+                             <button onclick="addItemToBasket('Kigali Spicy Brochettes', 8.50)" class="bg-[#22C55E] hover:bg-white text-black font-extrabold text-[10px] px-3.5 py-1.5 rounded-lg transition-all">+ Add to Bag</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prod-item category-Mains bg-[#0C111C] border border-gray-900 rounded-2xl p-4 flex gap-4">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=150&h=150&q=80" class="w-20 h-20 rounded-xl object-cover shrink-0 select-none">
+                    <div class="flex-1 flex flex-col justify-between">
+                        <div>
+                             <h4 class="font-bold text-sm text-white font-display">Tandoor Clay Pizza</h4>
+                             <p class="text-gray-500 text-[10px] mt-0.5 line-clamp-1">Woodfired clay stove pizza with mozzarella</p>
+                        </div>
+                        <div class="flex justify-between items-center pt-2">
+                             <span class="font-mono text-emerald-450 font-bold text-xs">$12.00</span>
+                             <button onclick="addItemToBasket('Tandoor Clay Pizza', 12.00)" class="bg-[#22C55E] hover:bg-white text-black font-extrabold text-[10px] px-3.5 py-1.5 rounded-lg transition-all">+ Add to Bag</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Drinks (Hidden by default) -->
+                <div class="prod-item category-Drinks hidden bg-[#0C111C] border border-gray-900 rounded-2xl p-4 flex gap-4">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=150&h=150&q=80" class="w-20 h-20 rounded-xl object-cover shrink-0 select-none">
+                    <div class="flex-1 flex flex-col justify-between">
+                        <div>
+                             <h4 class="font-bold text-sm text-white font-display">Roasted Macchiato</h4>
+                             <p class="text-gray-500 text-[10px] mt-0.5 line-clamp-1">Steamed milk and organic Rwanda espresso shot</p>
+                        </div>
+                        <div class="flex justify-between items-center pt-2">
+                             <span class="font-mono text-emerald-450 font-bold text-xs">$3.50</span>
+                             <button onclick="addItemToBasket('Roasted Macchiato', 3.50)" class="bg-[#22C55E] hover:bg-white text-black font-extrabold text-[10px] px-3.5 py-1.5 rounded-lg transition-all">+ Add to Bag</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sweets (Hidden by default) -->
+                <div class="prod-item category-Sweets hidden bg-[#0C111C] border border-gray-900 rounded-2xl p-4 flex gap-4">
+                    <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=150&h=150&q=80" class="w-20 h-20 rounded-xl object-cover shrink-0 select-none">
+                    <div class="flex-1 flex flex-col justify-between">
+                        <div>
+                             <h4 class="font-bold text-sm text-white font-display">Chocolate Lava Soufflé</h4>
+                             <p class="text-gray-500 text-[10px] mt-0.5 line-clamp-1">Melted dark cacao with vanilla icecream scoop</p>
+                        </div>
+                        <div class="flex justify-between items-center pt-2">
+                             <span class="font-mono text-emerald-450 font-bold text-xs">$5.00</span>
+                             <button onclick="addItemToBasket('Chocolate Lava Soufflé', 5.00)" class="bg-[#22C55E] hover:bg-white text-black font-extrabold text-[10px] px-3.5 py-1.5 rounded-lg transition-all">+ Add to Bag</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW 3: TABLES MAP VIEWER -->
+        <div id="view_tables" class="hidden bg-[#0C111C] border border-gray-900 p-6 rounded-[24px] text-left">
+            <div class="border-b border-gray-900 pb-4 mb-6">
+                 <h3 class="text-base font-black text-white font-display">Assigned physical seat tables</h3>
+                 <p class="text-2xs text-gray-500 mt-1">Specify your physical table position before checkout validation</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4" id="table_grids_list">
+                 <div onclick="selectDinerTable('Table 01')" class="border-2 border-[#22C55E] p-5 rounded-2xl bg-[#111827] flex items-center justify-between cursor-pointer">
+                      <div>
+                           <span class="block font-bold text-white text-sm">Table 01</span>
+                           <span class="block text-[8.5px] text-gray-500 font-bold">Standard Balcony</span>
+                      </div>
+                      <span class="bg-[#22C55E]/10 border border-[#22C55E]/20 text-[#22C55E] px-2.5 py-0.5 text-[8px] font-black uppercase rounded">Selected</span>
+                 </div>
+                 <div onclick="selectDinerTable('Table 03')" class="border border-gray-900 hover:border-gray-800 p-5 rounded-2xl bg-[#111827] flex items-center justify-between cursor-pointer">
+                      <div>
+                           <span class="block font-bold text-white text-sm">Table 03 (Vip)</span>
+                           <span class="block text-[8.5px] text-gray-500 font-bold">VIP Sofa Side</span>
+                      </div>
+                      <span class="bg-gray-950 text-gray-500 px-2.5 py-0.5 text-[8.5px] font-bold rounded">Free</span>
+                 </div>
+            </div>
+        </div>
+
+        <!-- VIEW 4: MY ORDERS TRACKER -->
+        <div id="view_orders" class="hidden bg-[#0C111C] border border-gray-900 p-6 rounded-[24px] text-left">
+            <div class="border-b border-gray-900 pb-4 mb-6">
+                 <h3 class="text-base font-black text-white font-display">My Tableside Orders</h3>
+                 <p class="text-2xs text-gray-400 mt-1">Cook progress tracker connected directly to the chef's terminal</p>
+            </div>
+
+            <div class="space-y-4">
+                 <div class="bg-[#111827] border border-gray-900 p-4 rounded-xl flex items-center justify-between">
+                      <div>
+                           <span class="block text-xs font-mono font-bold text-white uppercase">TXN-942659424 (<span class="text-emerald-400 font-sans">MoMo Cleared</span>)</span>
+                           <span class="block text-[10px] text-gray-500 font-medium font-sans mt-1">Ordered traditional Brochettes x1 (Table 01)</span>
+                      </div>
+                      <span class="bg-blue-500/10 border border-blue-500/20 text-blue-400 px-3 py-1 rounded-full text-[9px] font-black uppercase">Cooking</span>
+                 </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- SLIDING SHOPPING CART DRAWER (Modal Overlay) -->
+    <div id="cart_drawer_mask" class="hidden fixed inset-0 z-50 flex justify-end">
+        <!-- Backdrop close -->
+        <div onclick="toggleCartDrawer(false)" class="absolute inset-0 bg-black/80 backdrop-blur-xs"></div>
+        
+        <!-- Drawer content -->
+        <div class="w-full max-w-sm bg-[#0C111C] p-6 border-l border-gray-900 flex flex-col justify-between h-full relative z-10 text-left">
+            <div>
+                <div class="flex justify-between items-center border-b border-gray-900 pb-4 mb-6 select-none">
+                    <h4 class="font-bold text-white font-display">Shopping Bag</h4>
+                    <button onclick="toggleCartDrawer(false)" class="text-gray-500 hover:text-white cursor-pointer select-none">✕ Close</button>
+                </div>
+                
+                <!-- Dynamic Items list -->
+                <div class="space-y-4" id="drawer_items_list">
+                    <p class="text-xs text-gray-500 text-center py-10" id="cart_empty_text">Your bag is empty.</p>
+                </div>
+            </div>
+
+            <!-- Totals & checkout -->
+            <div class="border-t border-gray-900 pt-5 space-y-4 select-none">
+                <div class="flex justify-between text-xs font-medium">
+                     <span class="text-gray-500">Subtotal:</span>
+                     <span class="font-bold text-white font-mono" id="subtotal_elm">$0.00</span>
+                </div>
+                <button onclick="initiateCheckout()" class="w-full py-4 text-xs font-black uppercase tracking-wider bg-[#22C55E] hover:bg-white text-black rounded-xl transition-all cursor-pointer">
+                     Secure Mobile checkout ($<span id="checkout_val_elm">0.00</span>)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MTN MOMO PAYMENT CALLBACK EMULATOR MODAL -->
+    <div id="momo_payment_modal" class="hidden fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-4">
+         <div class="bg-[#0C111C] border border-gray-800 rounded-3xl p-6 w-full max-w-sm text-center space-y-5">
+              <div class="w-14 h-14 rounded-full bg-amber-500/15 border border-amber-500/35 flex items-center justify-center text-amber-500 text-lg font-black mx-auto animate-pulse font-mono">
+                    MTN
+              </div>
+              <h3 class="text-base font-extrabold text-white font-display">Mobile Money Payment Request</h3>
+              <p class="text-2xs text-gray-400 leading-relaxed max-w-[240px] mx-auto font-light">
+                   We've sent a secure push request onto your smartphone. Approve with PIN to deduct transaction.
+              </p>
+
+              <!-- Loading spinner / Timer -->
+              <div class="space-y-2 py-2 select-none">
+                   <div class="animate-spin w-6 h-6 border-2 border-[#22C55E] border-t-transparent rounded-full mx-auto"></div>
+                   <span class="block text-[10px] text-gray-500 font-mono">Awaiting Callback Approval (<span id="timer_sec">10</span>s)</span>
+              </div>
+
+              <!-- Manual bypass simulation trigger -->
+              <div class="flex gap-2">
+                   <button onclick="simulatePaymentCallback(true)" class="flex-1 py-2 bg-emerald-500/10 hover:bg-[#22C55E] hover:text-black border border-emerald-500/35 text-white font-bold text-[10px] uppercase rounded-lg transition-colors">Mock Success</button>
+                   <button onclick="simulatePaymentCallback(false)" class="flex-1 py-2 bg-red-950/20 hover:bg-red-500 text-[#FF5A5F] hover:text-black border border-red-900 text-[10px] font-bold uppercase rounded-lg transition-colors">Mock Fail</button>
+              </div>
+         </div>
+    </div>
+
+    <!-- CORE VANILLA JAVASCRIPT DEMO LOGIC -->
+    <script>
+        // Track cart items dictionary
+        let activeRestaurantName = 'Le Gourmet';
+        let currentCategory = 'Mains';
+        let activeTableId = 'Table 01';
+        let cart = [];
+        let paymentTimeout;
+        let countdownTimer;
+
+        // Route navigate dispatcher
+        function navigateView(viewName) {
+            document.getElementById('view_home').style.display = viewName === 'home' ? 'space-y-6' : 'none';
+            document.getElementById('view_menu').style.display = viewName === 'menu' ? 'space-y-6' : 'none';
+            document.getElementById('view_tables').style.display = viewName === 'tables' ? 'block' : 'none';
+            document.getElementById('view_orders').style.display = viewName === 'orders' ? 'block' : 'none';
+
+            // Desktop tabs style toggler
+            const desktopIds = ['home', 'tables', 'orders'];
+            desktopIds.forEach(id => {
+                const btn = document.getElementById(`nav_btn_${id}`);
+                const mBtn = document.getElementById(`mobile_btn_${id}`);
+                
+                if (id === viewName || (id === 'home' && viewName === 'menu')) {
+                    btn.className = "px-4 py-2 rounded-full cursor-pointer transition-all bg-[#22C55E] text-black font-extrabold";
+                    mBtn.style.color = '#22C55E';
+                } else {
+                    btn.className = "px-4 py-2 rounded-full cursor-pointer transition-all text-gray-400 hover:text-white";
+                    mBtn.style.color = '#6B7280';
+                }
+            });
+        }
+
+        // Selected restaurant router
+        function selectRestaurant(name, img, subtitle) {
+            activeRestaurantName = name;
+            document.getElementById('menu_title_elm').textContent = name;
+            document.getElementById('menu_subtitle_elm').textContent = subtitle + ' • Nyarugenge, Kigali';
+            
+            // Auto resets cart on switching brands to prevent food cross contamination
+            cart = [];
+            renderBasketItems();
+            navigateView('menu');
+        }
+
+        // Category filter switches
+        function filterCategory(catStr) {
+            currentCategory = catStr;
+            const tabs = ['mains', 'drinks', 'sweets'];
+            tabs.forEach(tab => {
+               const btn = document.getElementById(`cat_btn_${tab}`);
+               if (tab === catStr.toLowerCase()) {
+                   btn.className = "px-5 py-2 rounded-full text-xs font-black tracking-wide bg-[#22C55E] text-black";
+               } else {
+                   btn.className = "px-5 py-2 rounded-full text-xs font-black tracking-wide bg-[#111827] text-gray-400 hover:text-white";
+               }
+            });
+
+            // Hide/Show cards
+            const cards = document.querySelectorAll('.prod-item');
+            cards.forEach(card => {
+                if (card.className.includes(`category-${catStr}`)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Diner Selection table
+        function selectDinerTable(tableStr) {
+            activeTableId = tableStr;
+            const tableGridElm = document.getElementById('table_grids_list');
+            tableGridElm.innerHTML = `
+                 <div onclick="selectDinerTable('Table 01')" class="border-2 ${tableStr === 'Table 01' ? 'border-[#22C55E]' : 'border-gray-900'} p-5 rounded-2xl bg-[#111827] flex items-center justify-between cursor-pointer">
+                      <div><span class="block font-bold text-white text-sm">Table 01</span><span class="block text-[8.5px] text-gray-500 font-bold">Standard Balcony</span></div>
+                      ${tableStr === 'Table 01' ? '<span class="bg-[#22C55E]/10 border border-[#22C55E]/20 text-[#22C55E] px-2.5 py-0.5 text-[8px] font-black uppercase rounded">Selected</span>' : '<span class="bg-gray-950 text-gray-500 px-2.5 py-0.5 text-[8.5px] font-bold rounded">Free</span>'}
+                 </div>
+                 <div onclick="selectDinerTable('Table 03')" class="border-2 ${tableStr === 'Table 03' ? 'border-[#22C55E]' : 'border-gray-900'} p-5 rounded-2xl bg-[#111827] flex items-center justify-between cursor-pointer">
+                      <div><span class="block font-bold text-white text-sm">Table 03 (Vip)</span><span class="block text-[8.5px] text-gray-500 font-bold">VIP Sofa Side</span></div>
+                      ${tableStr === 'Table 03' ? '<span class="bg-[#22C55E]/10 border border-[#22C55E]/20 text-[#22C55E] px-2.5 py-0.5 text-[8px] font-black uppercase rounded">Selected</span>' : '<span class="bg-gray-950 text-gray-500 px-2.5 py-0.5 text-[8.5px] font-bold rounded">Free</span>'}
+                 </div>
+            `;
+        }
+
+        // Cart Drawer overlays Action
+        function toggleCartDrawer(isOpen) {
+            const drawer = document.getElementById('cart_drawer_mask');
+            drawer.style.display = isOpen ? 'flex' : 'none';
+        }
+
+        // Add to basket logic
+        function addItemToBasket(name, price) {
+            const existing = cart.find(it => it.name === name);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ name, price, qty: 1 });
+            }
+            renderBasketItems();
+            
+            // Show badge
+            const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('cart_indicator_num').textContent = totalQty;
+        }
+
+        // Render drawer list items
+        function renderBasketItems() {
+             const container = document.getElementById('drawer_items_list');
+             const emptyTxt = document.getElementById('cart_empty_text');
+             
+             if (cart.length === 0) {
+                 container.innerHTML = `<p class="text-xs text-gray-500 text-center py-10" id="cart_empty_text">Your bag is empty.</p>`;
+                 document.getElementById('subtotal_elm').textContent = "$0.00";
+                 document.getElementById('checkout_val_elm').textContent = "0.00";
+                 return;
+             }
+
+             let listMarkup = '';
+             let total = 0;
+             cart.forEach((item, idx) => {
+                 const itemSub = item.price * item.qty;
+                 total += itemSub;
+                 listMarkup += `
+                     <div class="flex justify-between items-center bg-[#111827] p-3 rounded-xl border border-gray-900">
+                          <div>
+                               <span class="block text-xs font-bold text-white leading-none font-display">${item.name}</span>
+                               <span class="block text-[10px] text-gray-505 font-mono mt-1.5">$${item.price.toFixed(2)} x${item.qty}</span>
+                          </div>
+                          <span class="font-mono text-emerald-400 font-extrabold text-xs">$${itemSub.toFixed(2)}</span>
+                     </div>
+                 `;
+             });
+
+             container.innerHTML = listMarkup;
+             document.getElementById('subtotal_elm').textContent = `$${total.toFixed(2)}`;
+             document.getElementById('checkout_val_elm').textContent = total.toFixed(2);
+        }
+
+        // Open payments emulator callback
+        function initiateCheckout() {
+            if (cart.length === 0) {
+                alert('Add dishes first before trying to checkout!');
+                return;
+            }
+            toggleCartDrawer(false);
+            
+            // Open MTN MoMo validation pane
+            document.getElementById('momo_payment_modal').style.display = 'flex';
+            
+            // Start 10 seconds callback countdown
+            let secRem = 10;
+            document.getElementById('timer_sec').textContent = secRem;
+            clearInterval(countdownTimer);
+            countdownTimer = setInterval(() => {
+                secRem -= 1;
+                document.getElementById('timer_sec').textContent = secRem;
+                if (secRem <= 0) {
+                    clearInterval(countdownTimer);
+                    simulatePaymentCallback(true); // Autoclose successfully on timeout
+                }
+            }, 1000);
+        }
+
+        // Emulate Push notification callbacks (Simulates API trigger back to system REST)
+        function simulatePaymentCallback(isSuccess) {
+            clearInterval(countdownTimer);
+            document.getElementById('momo_payment_modal').style.display = 'none';
+
+            if (isSuccess) {
+                alert('Payment Received Successfully! Subtracted via MTN MoMo safely. Your food order code has been queued for the Chef!');
+                // Reset cart
+                cart = [];
+                document.getElementById('cart_indicator_num').textContent = 0;
+                renderBasketItems();
+                
+                // Route to Diner orders tracker and add record
+                navigateView('orders');
+            } else {
+                alert('Payment Transaction Aborted: Cancelled or insufficient balances found.');
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Verdana, sans-serif; background-color: #0c121d; color: #ffffff; padding: 24px; margin: 0; }
+    .card { background-color: #111827; border: 1px solid #1f2937; border-radius: 12px; padding: 24px; max-width: 600px; margin: 0 auto; }
+    .header { font-size: 20px; font-weight: bold; color: #f59e0b; margin-bottom: 12px; border-bottom: 2px solid #1f2937; padding-bottom: 12px; }
+    .detail { font-size: 14px; margin-bottom: 8px; color: #d1d5db; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">🍳 Fire Up! Your Order is Preparing - #{{orderNumber}}</div>
+    <p class="detail">Hi {{customerName}},</p>
+    <p class="detail">Your dishes at <strong>{{restaurantName}}</strong> are currently being cooked on the flame by our expert chefs!</p>
+    <p class="detail">We are ensuring everything is freshly arranged and flavored to absolute perfection. It will count down shortly!</p>
+    <p class="detail">Thank you for your patience.</p>
+  </div>
+</body>
+</html>
